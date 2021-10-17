@@ -24,5 +24,8 @@ pipeline {
         success {
             echo 'success'
         }
+        always {
+            cleanWs()
+        }
     }
 }
