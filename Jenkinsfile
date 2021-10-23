@@ -3,10 +3,10 @@ pipeline {
     agent any
     
     stages {
-        stage('Checkout') {
+        stage('Build') {
+            agent { dockerfile true }
             steps {
-                checkout scm
-                echo 'checkout success'
+                sh 'ls'
             }
         }
     }
