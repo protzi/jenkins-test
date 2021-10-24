@@ -14,9 +14,7 @@ pipeline {
         stage('Inside steps') {
             steps {
                 sh "docker exec -it ${PROJECT_NAME}:latest sh"
-            }
-            steps {
-                sh "ls"   
+                sh "ls"
             }
         }
     }
