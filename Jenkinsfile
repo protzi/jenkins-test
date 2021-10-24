@@ -1,29 +1,22 @@
+#!groovy
 
-pipeline {
-    agent any
-    environment {
-        projectName = 'jenkins-test'
-        projectImage = ''
-    }
-    
-    stages {
-        stage('Build') {
-            steps {
-                script {
-                    projectImage = docker.build("${projectName}:latest")   
-                }
-            }
-        }
-        stage('Inside steps') {
-            steps {
-                sh "docker images ls"
-                sh "ls"
-            }
+node {
+    def image = ''
+    def name = 'jenkins-test'
+
+    try {
+        if (env.CHANGE_TITLE) {
+            echo "checking PR title"
+        } else {
+            echo "build process"
         }
     }
-    post {
-        always {
-            deleteDir()
-        }
+    catch (exception) {
+        echo "I failed, ${exception}"
+        currentBuild.result = 'FAILURE'
+    }
+    finally {
+        echo "I am ${currentBuild.result}. One way or another, I have finished"
+        deleteDir()
     }
 }
