@@ -11,6 +11,6 @@ class Person {
    }
 
   def sayHello() {
-    echo "Hello, my name is ${this.name}"
+    return "Hello, my name is ${this.name}"
   }
 }

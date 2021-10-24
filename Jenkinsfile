@@ -8,6 +8,6 @@ node {
 
     stage('Create person') {
         def oleg = new Person('Oleg', 21)
-        oleg.sayHello()
+        echo oleg.sayHello()
     }
 }
