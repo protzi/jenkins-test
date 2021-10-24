@@ -2,13 +2,16 @@
 pipeline {
     agent any
     environment {
-        PROJECT_NAME = 'jenkins-test'
+        projectName = 'jenkins-test'
+        projectImage = ''
     }
     
     stages {
         stage('Build') {
             steps {
-                sh "docker build -t ${PROJECT_NAME}:latest ."
+                script {
+                    projectImage = docker.build("${projectName}:latest")   
+                }
             }
         }
         stage('Inside steps') {
