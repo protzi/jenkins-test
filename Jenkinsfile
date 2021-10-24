@@ -22,7 +22,7 @@ node {
                 }
                 
                 stage('Build project image') {
-                       PROJECT_IMAGE = buildProjectImage(PROJECT_NAME)
+                    PROJECT_IMAGE = buildProjectImage(PROJECT_NAME, env.BRANCH_NAME)
                 }
             }
         }
