@@ -10,6 +10,7 @@ node {
         } else {
             lock(resource: "${PROJECT_NAME}-${env.BRANCH_NAME}-deploy-lock") {
                 stage('Checkout') {
+                    sh 'printenv'
                     checkout scm
                 }
             }
