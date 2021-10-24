@@ -4,7 +4,10 @@
 import com.protzi.Person
 
 node {
-    test('Oleg')
+
+    stage('Global test') {
+        test('Oleg')
+    }
 
     stage('Create person') {
         def oleg = new Person('Oleg', 21)
