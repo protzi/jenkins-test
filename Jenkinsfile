@@ -63,8 +63,8 @@ node {
 
                     stage('Build project env') {
                         buildProjectEnvConfig()
-                        echo 'ls'
-                        echo 'cat .env'
+                        sh 'ls'
+                        sh 'cat .env'
                     }
                     
                     stage('Deployment') {
