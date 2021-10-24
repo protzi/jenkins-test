@@ -1,14 +1,18 @@
 #!groovy
 
 node {
-    def image = ''
-    def name = 'jenkins-test'
+    def PROJECT_NAME = 'jenkins-test'
+    def PROJECT_IMAGE = ''
 
     try {
         if (env.CHANGE_TITLE) {
             echo "checking PR title"
         } else {
-            echo "build process"
+            lock(resource: "${PROJECT_NAME}-${BRANCH_NAME}-deploy-lock") {
+                stage('Checkout') {
+                    checkout scm
+                }
+            }
         }
     }
     catch (exception) {
