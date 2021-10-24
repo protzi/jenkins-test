@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Inside steps') {
             steps {
-                sh "docker exec -it ${PROJECT_NAME}:latest sh"
+                sh "docker images ls"
                 sh "ls"
             }
         }
