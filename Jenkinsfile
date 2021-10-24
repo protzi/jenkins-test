@@ -56,17 +56,16 @@ node {
                     stage('Install project dependencies') {
                         installProjectDependencies()
                     }
-                    
+
+                    stage('Build project env') {
+                        buildProjectEnvConfig()
+                        sh 'cat .env'
+                    }
+
                     stage('Test project') {
                         testProject()
                     }
 
-                    stage('Build project env') {
-                        buildProjectEnvConfig()
-                        sh 'ls'
-                        sh 'cat .env'
-                    }
-                    
                     stage('Deployment') {
                         deployProjectToAWSElasticBeanstalk()
                     }
