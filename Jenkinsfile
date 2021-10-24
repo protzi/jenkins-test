@@ -8,7 +8,7 @@ node {
         if (env.CHANGE_TITLE) {
             echo "checking PR title"
         } else {
-            lock(resource: "${PROJECT_NAME}-${BRANCH_NAME}-deploy-lock") {
+            lock(resource: "${PROJECT_NAME}-${env.BRANCH_NAME}-deploy-lock") {
                 stage('Checkout') {
                     checkout scm
                 }
